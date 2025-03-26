@@ -87,14 +87,17 @@
 
 .transaction-list {
   padding: 20px;
-  padding-right: 25px;
+  padding-right: 35px;
+  transform: scale(0.9);
+  transform-origin: top left;
+  width: 111%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: white;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 th, td {
@@ -192,4 +195,11 @@ tr:hover {
 .table-filter:focus {
   outline: none;
   border-color: #0066ff;
+}
+
+/* Add this new class for the container */
+.main-content {
+  padding: 32px;
+  padding-right: 45px;
+  box-sizing: border-box;
 } 

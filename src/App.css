@@ -2,17 +2,19 @@
     display: flex;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
 }
 
 .main-content {
     flex: 1;
     margin-left: 240px; /* Same as sidebar width */
     padding: 32px;
+    padding-right: 45px; /* Additional right padding */
     background-color: #f8f9fa;
     width: calc(100% - 240px);
     box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    min-width: 768px; /* Prevent content from becoming too narrow */
+    overflow-x: hidden;
+    min-width: 800px; /* Adjusted minimum width */
 }
 
 /* Update media query for better responsive behavior */
