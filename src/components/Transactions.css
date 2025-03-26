@@ -87,12 +87,14 @@
 
 .transaction-list {
   padding: 20px;
+  padding-right: 25px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: white;
+  margin-right: 10px;
 }
 
 th, td {

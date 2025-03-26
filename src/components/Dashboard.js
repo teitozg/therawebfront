@@ -11,7 +11,7 @@ function Dashboard() {
           height="800"
           src="https://lookerstudio.google.com/embed/reporting/bb1feddc-579f-4f11-aadd-cc966b227720/page/bR1AF"
           frameBorder="0"
-          style={{ border: 0, borderRadius: "8px" }}
+          style={{ border: 0, borderRadius: "8px", padding: "20px" }}
           allowFullScreen
           sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         />
