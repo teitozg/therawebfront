@@ -14,7 +14,11 @@ function Auth({ onLogin }) {
   const [error, setError] = useState(null);
 
   const isAllowedEmail = (email) => {
-    const allowedEmails = ["teozavalia@gmail.com", "nachoberardi@gmail.com"];
+    const allowedEmails = [
+      "teozavalia@gmail.com",
+      "nachoberardi@gmail.com",
+      "fmohideen@mba2026.hbs.edu",
+    ];
     return email.endsWith("@getthera.com") || allowedEmails.includes(email);
   };
 
