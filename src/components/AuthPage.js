@@ -44,7 +44,7 @@ function AuthPage({ onLogin }) {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@getthera.com"
+                placeholder="Enter your email"
                 required
               />
             </div>

@@ -30,7 +30,9 @@ function Auth({ onLogin }) {
 
     try {
       if (!isAllowedEmail(email)) {
-        throw new Error("Only getthera.com accounts are allowed.");
+        throw new Error(
+          "Only getthera.com accounts and authorized emails are allowed."
+        );
       }
 
       const { error } = await supabase.auth.signInWithOtp({
@@ -83,7 +85,7 @@ function Auth({ onLogin }) {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h2>Sign in to Thera</h2>
+        <h2>Welcome to Thera</h2>
         {error && <div className="error-message">{error}</div>}
 
         {step === "email" ? (
@@ -92,7 +94,7 @@ function Auth({ onLogin }) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@getthera.com"
+              placeholder="Enter your email"
               required
             />
             <button type="submit" disabled={loading}>
