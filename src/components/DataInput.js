@@ -77,6 +77,9 @@ function DataInput() {
           {
             method: "POST",
             body: formData,
+            headers: {
+              "x-api-key": process.env.REACT_APP_CLIENT_API_KEY,
+            },
           }
         );
 
