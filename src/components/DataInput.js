@@ -68,11 +68,16 @@ function DataInput() {
 
     try {
       for (const file of files) {
+        console.log(`Uploading file: ${file.name}`); // Debug log
+
         const formData = new FormData();
         formData.append("file", file);
         formData.append("source", selectedSource);
 
-        // Remove the Content-Type header and let the browser set it with the boundary
+        console.log(
+          `Making request to: ${process.env.REACT_APP_API_URL}/api/upload`
+        ); // Debug log
+
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}/api/upload`,
           {
@@ -82,25 +87,33 @@ function DataInput() {
               "x-api-key":
                 "9f8a24bcfb9d4c8e97f6c4c7e2ac9ed7d64fbd3d2ad1f1ef68e8a58273f5b649",
             },
+            credentials: "include", // Add this if your backend expects credentials
           }
         );
 
+        console.log("Response status:", response.status); // Debug log
+
         if (!response.ok) {
-          const errorData = await response.json().catch(() => null);
+          const errorText = await response.text();
+          console.error("Error response:", errorText); // Debug log
+
+          const errorData = JSON.parse(errorText);
           throw new Error(
             errorData?.message ||
               `Error uploading ${file.name} (${response.status})`
           );
         }
+
+        const responseData = await response.json();
+        console.log("Upload successful:", responseData); // Debug log
       }
 
-      // Refresh source data after successful upload
       await fetchSourceData();
       setFiles([]);
       alert("Files uploaded successfully!");
     } catch (err) {
       console.error("Upload error:", err);
-      setError(err.message);
+      setError(err.message || "Failed to upload file");
     } finally {
       setLoading(false);
     }
