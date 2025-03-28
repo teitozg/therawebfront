@@ -14,7 +14,12 @@ export function useAuth() {
   const [error, setError] = useState(null);
 
   const isAllowedEmail = (email) => {
-    const allowedEmails = ["teozavalia@gmail.com", "nachoberardi@gmail.com"];
+    const allowedEmails = [
+      "teozavalia@gmail.com",
+      "nachoberardi@gmail.com",
+      "fmohideen@mba2026.hbs.edu",
+      "ferozemohideen@gmail.com",
+    ];
     return email.endsWith("@getthera.com") || allowedEmails.includes(email);
   };
 
@@ -31,7 +36,9 @@ export function useAuth() {
 
     try {
       if (!isAllowedEmail(email)) {
-        throw new Error("Only getthera.com accounts are allowed.");
+        throw new Error(
+          "Only getthera.com accounts and authorized emails are allowed."
+        );
       }
 
       const { error } = await supabase.auth.signInWithOtp({
