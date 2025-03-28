@@ -18,6 +18,7 @@ function Auth({ onLogin }) {
       "teozavalia@gmail.com",
       "nachoberardi@gmail.com",
       "fmohideen@mba2026.hbs.edu",
+      "ferozemohideen@gmail.com",
     ];
     return email.endsWith("@getthera.com") || allowedEmails.includes(email);
   };
