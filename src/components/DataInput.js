@@ -72,19 +72,25 @@ function DataInput() {
         formData.append("file", file);
         formData.append("source", selectedSource);
 
+        // Remove the Content-Type header and let the browser set it with the boundary
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}/api/upload`,
           {
             method: "POST",
             body: formData,
             headers: {
-              "x-api-key": process.env.REACT_APP_CLIENT_API_KEY,
+              "x-api-key":
+                "9f8a24bcfb9d4c8e97f6c4c7e2ac9ed7d64fbd3d2ad1f1ef68e8a58273f5b649",
             },
           }
         );
 
         if (!response.ok) {
-          throw new Error(`Error uploading ${file.name}`);
+          const errorData = await response.json().catch(() => null);
+          throw new Error(
+            errorData?.message ||
+              `Error uploading ${file.name} (${response.status})`
+          );
         }
       }
 
@@ -93,6 +99,7 @@ function DataInput() {
       setFiles([]);
       alert("Files uploaded successfully!");
     } catch (err) {
+      console.error("Upload error:", err);
       setError(err.message);
     } finally {
       setLoading(false);
